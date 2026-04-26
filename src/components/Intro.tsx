@@ -19,19 +19,19 @@ export function Intro() {
       opacity: 1,
       scale: 1,
       filter: "blur(0px)",
-      duration: 1.5,
+      duration: 1.2,
       ease: "power3.out",
     })
     .to(logoRef.current, {
-      scale: 1.1,
-      duration: 1,
+      scale: 1.08,
+      duration: 0.8,
       ease: "sine.inOut",
     })
     .to(introRef.current, {
       yPercent: -100,
-      duration: 1,
+      duration: 0.8,
       ease: "expo.inOut",
-      delay: 0.5,
+      delay: 0.3,
     });
 
     return () => {
