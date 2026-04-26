@@ -29,14 +29,18 @@ export function ProductCard({ product, priority }: { product: Product; priority?
           </div>
         </div>
       </div>
-      <div className="pt-4 flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            {product.category}
-          </p>
-          <h3 className="mt-1 text-sm md:text-[15px] text-foreground truncate">{product.name}</h3>
+      <div className="pt-3 md:pt-4 flex flex-col gap-1">
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              {product.category}
+            </p>
+            <h3 className="mt-0.5 text-sm md:text-[15px] text-foreground font-medium leading-snug line-clamp-2 min-h-[2.5rem] md:min-h-0">
+              {product.name}
+            </h3>
+          </div>
         </div>
-        <p className="text-sm md:text-[15px] text-foreground whitespace-nowrap">
+        <p className="text-sm md:text-[15px] text-foreground font-semibold">
           {formatIDR(product.price)}
         </p>
       </div>

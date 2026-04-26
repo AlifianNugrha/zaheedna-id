@@ -52,7 +52,7 @@ function KatalogPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-14">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-10 md:gap-y-14">
         {filtered.map((p, i) => (
           <ProductCard key={p.id} product={p} priority={i < 4} />
         ))}

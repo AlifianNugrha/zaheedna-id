@@ -39,11 +39,11 @@ function HomePage() {
         transition={{ duration: 0.8 }}
         className="relative overflow-hidden pattern-islamic"
       >
-        <div className="mx-auto max-w-[1400px] px-5 md:px-10 pt-20 md:pt-36 pb-16 md:pb-32">
+        <div className="mx-auto max-w-[1400px] px-5 md:px-10 pt-12 md:pt-36 pb-16 md:pb-32">
           <div className="grid grid-cols-12 gap-8 items-center">
             <div className="col-span-12 md:col-span-6 order-2 md:order-1 animate-fade-up">
-              <h1 className="font-display text-[52px] leading-[1] md:text-[96px] md:leading-[0.9] tracking-[-0.03em] text-foreground text-balance mb-8">
-                Keagungan dalam <br />
+              <h1 className="font-display text-[44px] leading-[1.1] md:text-[96px] md:leading-[0.9] tracking-[-0.03em] text-foreground text-balance mb-8">
+                Keagungan dalam <br className="hidden md:block" />
                 <span className="text-accent italic">Kesederhanaan</span>
               </h1>
 
@@ -53,10 +53,10 @@ function HomePage() {
                 untuk kenyamanan ibadah dan momen istimewa Anda.
               </p>
 
-              <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
                 <Link
                   to="/katalog"
-                  className="group relative inline-flex items-center justify-center px-10 h-16 bg-primary text-primary-foreground text-[12px] uppercase tracking-[0.25em] transition-all hover:bg-foreground overflow-hidden"
+                  className="group relative inline-flex items-center justify-center w-full sm:w-auto px-10 h-14 md:h-16 bg-primary text-primary-foreground text-[11px] uppercase tracking-[0.25em] transition-all hover:bg-foreground overflow-hidden"
                 >
                   <span className="relative z-10">Jelajahi Koleksi</span>
                   <div className="absolute inset-0 bg-accent translate-y-full transition-transform group-hover:translate-y-0" />
@@ -86,10 +86,10 @@ function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
                 </div>
 
-                <div className="absolute -bottom-6 -right-6 md:bottom-12 md:-right-12 glass-gold p-6 md:p-8 max-w-[240px] shadow-xl">
-                  <p className="text-[10px] uppercase tracking-[0.3em] text-accent mb-2">Featured Piece</p>
-                  <p className="font-display text-2xl text-foreground leading-tight">Zuleika Gold Embroidery Gamis</p>
-                  <div className="mt-4 h-px w-12 bg-accent" />
+                <div className="absolute bottom-2 right-2 md:bottom-12 md:-right-12 glass-gold p-4 md:p-8 max-w-[180px] md:max-w-[240px] shadow-xl">
+                  <p className="text-[9px] uppercase tracking-[0.3em] text-accent mb-1 md:mb-2">Featured Piece</p>
+                  <p className="font-display text-lg md:text-2xl text-foreground leading-tight">Zuleika Gold Embroidery Gamis</p>
+                  <div className="mt-3 md:mt-4 h-px w-10 md:w-12 bg-accent" />
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ function HomePage() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-3 md:gap-x-6 gap-y-12 md:gap-y-16">
           {featured.map((p, i) => (
             <ProductCard key={p.id} product={p} priority={i < 3} />
           ))}
@@ -177,9 +177,9 @@ function HomePage() {
             </p>
             <Link
               to="/tentang"
-              className="mt-8 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-foreground hover:text-accent"
+              className="mt-10 inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-foreground hover:text-accent group"
             >
-              Cerita Zaheedna <span aria-hidden>→</span>
+              Cerita Zaheedna <span className="transition-transform group-hover:translate-x-1" aria-hidden>→</span>
             </Link>
           </div>
         </div>
@@ -201,7 +201,7 @@ function HomePage() {
             </h2>
           </div>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-12 md:gap-y-14">
           {Array.from(
             new Map(
               [...bestSellers, ...products].map((p) => [p.id, p]),
@@ -233,7 +233,7 @@ function HomePage() {
             </p>
             <form
               onSubmit={(e) => e.preventDefault()}
-              className="mt-8 flex max-w-md border-b border-foreground/30 focus-within:border-accent transition"
+              className="mt-10 flex border-b border-foreground/30 focus-within:border-accent transition"
             >
               <input
                 type="email"
@@ -242,7 +242,7 @@ function HomePage() {
               />
               <button
                 type="submit"
-                className="text-[11px] uppercase tracking-[0.22em] px-3 text-foreground hover:text-accent"
+                className="text-[11px] uppercase tracking-[0.22em] px-4 py-3 text-foreground hover:text-accent"
               >
                 Daftar →
               </button>

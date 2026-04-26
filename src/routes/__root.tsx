@@ -77,16 +77,16 @@ function RootComponent() {
   const location = useLocation();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Intro />
       <Header />
-      <main className="flex-1 overflow-hidden">
+      <main className="flex-1">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 2.5 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 2.8 }}
           >
             <Outlet />
           </motion.div>

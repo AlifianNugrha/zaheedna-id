@@ -4,7 +4,7 @@ import { useCart } from "@/lib/cart";
 import { products } from "@/lib/products";
 import logo from "@/assets/logo.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search as SearchIcon, X } from "lucide-react";
+import { Search as SearchIcon, X, Menu } from "lucide-react";
 
 const navItems = [
   { to: "/", label: "Beranda" },
@@ -17,6 +17,7 @@ export function Header() {
   const { count } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProducts = searchQuery.trim() 
@@ -63,11 +64,11 @@ export function Header() {
                 ))}
               </nav>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 md:gap-4">
                 <button
                   onClick={() => setIsSearchOpen(true)}
                   aria-label="Cari"
-                  className="hidden md:inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-muted transition"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-muted transition"
                 >
                   <SearchIcon size={18} strokeWidth={1.5} />
                 </button>
@@ -94,6 +95,12 @@ export function Header() {
                 >
                   Shopee
                 </a>
+                <button
+                  onClick={() => setIsMenuOpen(true)}
+                  className="md:hidden flex h-10 w-10 items-center justify-center rounded-full hover:bg-muted transition"
+                >
+                  <Menu size={20} strokeWidth={1.5} />
+                </button>
               </div>
             </>
           ) : (
@@ -160,6 +167,55 @@ export function Header() {
           )}
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-50 bg-background md:hidden p-5 flex flex-col"
+          >
+            <div className="flex items-center justify-between h-16">
+              <span className="font-display text-2xl tracking-tight text-foreground">Zaheedna</span>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="h-10 w-10 flex items-center justify-center rounded-full hover:bg-muted transition"
+              >
+                <X size={24} strokeWidth={1.5} />
+              </button>
+            </div>
+            
+            <nav className="mt-12 flex flex-col gap-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="text-2xl font-display text-foreground/80 hover:text-foreground transition-colors"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="mt-auto pb-10 flex flex-col gap-4">
+              <a
+                href="https://shopee.co.id/zaheedna.id"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-14 items-center justify-center rounded-full bg-[#EE4D2D] text-white text-sm font-bold uppercase tracking-wider"
+              >
+                Belanja di Shopee
+              </a>
+              <p className="text-center text-[10px] uppercase tracking-widest text-muted-foreground mt-4">
+                Zaheedna Modern & Elegan
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

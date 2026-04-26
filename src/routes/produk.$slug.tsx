@@ -190,7 +190,7 @@ function ProductDetail() {
       {/* Related */}
       <section className="mx-auto max-w-[1400px] px-5 md:px-10 pt-24 md:pt-32">
         <h2 className="font-display text-3xl md:text-5xl text-foreground mb-10">Anda mungkin suka</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 md:gap-x-6 gap-y-10 md:gap-x-6 md:gap-y-14">
           {related.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
